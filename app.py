@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template_string
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
@@ -16,7 +16,7 @@ def home():
         difficulty = request.form.get("difficulty")
         style = request.form.get("style")
         problem = PROBLEMS.get((difficulty, style), "No problem found for this selection.")
-    return render_template_string("index.html", problem=problem)
+    return render_template("index.html", problem=problem)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
