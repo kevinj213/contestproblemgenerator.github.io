@@ -7,7 +7,7 @@ HTML_TEMPLATE = """
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>REPLACE - Math Contest Problem Trainer</title>
+    <title>Math Contest Problem Trainer</title>
     <style>
         body {
             background: linear-gradient(135deg, #e0eafc, #cfdef3);
@@ -64,7 +64,7 @@ HTML_TEMPLATE = """
 </head>
 <body>
     <div class="container">
-        <h1>REPLACE</h1>
+        <h1>Math Contest Problem Trainer</h1>
         <form method="post">
             <label for="difficulty">Difficulty:</label>
             <select name="difficulty" id="difficulty" required>
