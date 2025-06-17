@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>REPLACE - Math Trainer</title>
+</head>
+<body>
+    <h1>REPLACE - Math Contest Problem Trainer</h1>
+    <form method="post">
+        <p>
+            Difficulty:
+            <select name="difficulty">
+                <option value="">Select</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+        </p>
+        <p>
+            Style:
+            <select name="style">
+                <option value="">Select</option>
+                <option value="algebra">Algebra</option>
+                <option value="geometry">Geometry</option>
+                <option value="number_theory">Number Theory</option>
+                <option value="combinatorics">Combinatorics</option>
+            </select>
+        </p>
+        <p>
+            <input type="submit" value="Get Problem">
+        </p>
+    </form>
+    {% if problem %}
+        <hr>
+        <b>Sample Problem:</b>
+        <p>{{ problem }}</p>
+    {% endif %}
+</body>
+</html>
