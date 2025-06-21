@@ -1,37 +1,123 @@
 <html>
 <head>
-    <title>REPLACE - Math Trainer</title>
+    <title>Math Contest Problem Trainer</title>
+    <style>
+        body.dark-mode {
+            background-color: #222;
+            color: #eee;
+        }
+        body.dark-mode input, body.dark-mode select, body.dark-mode label {
+            background-color: #222;
+            color: #eee;
+        }
+        .settings-bar {
+            padding: 8px;
+            border-bottom: 1px solid #aaa;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function showSubtopics() {
+            var show = document.getElementById('toggleSubtopics').checked;
+            var topics = document.getElementsByName('topic');
+            var subtopicSections = document.getElementsByClassName('subtopics');
+            for (var i = 0; i < subtopicSections.length; i++) {
+                subtopicSections[i].style.display = 'none';
+            }
+            if (show) {
+                for (var i = 0; i < topics.length; i++) {
+                    if (topics[i].checked) {
+                        var section = document.getElementById('sub_' + topics[i].value);
+                        if (section) section.style.display = 'block';
+                    }
+                }
+            }
+        }
+        function toggleMode() {
+            var body = document.body;
+            body.classList.toggle('dark-mode');
+        }
+        window.onload = function() {
+            showSubtopics();
+        }
+    </script>
 </head>
 <body>
-    <h1>REPLACE - Math Contest Problem Trainer</h1>
+    <div class="settings-bar">
+        <label>
+            <input type="checkbox" id="toggleMode" onclick="toggleMode()"> Dark Mode
+        </label>
+        &nbsp;|&nbsp;
+        <label>
+            <input type="checkbox" id="toggleSubtopics" onclick="showSubtopics()" checked> Show Subtopics
+        </label>
+    </div>
+    <h1 align="center">Math Contest Problem Trainer</h1>
+    <h2 align="center">Made by Kevin Ji</h2>
+    <hr>
     <form method="post">
-        <p>
-            Difficulty:
-            <select name="difficulty">
-                <option value="">Select</option>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-        </p>
-        <p>
-            Style:
-            <select name="style">
-                <option value="">Select</option>
-                <option value="algebra">Algebra</option>
-                <option value="geometry">Geometry</option>
-                <option value="number_theory">Number Theory</option>
-                <option value="combinatorics">Combinatorics</option>
-            </select>
-        </p>
-        <p>
-            <input type="submit" value="Get Problem">
-        </p>
+        <b>Difficulty:</b><br>
+        <label><input type="checkbox" name="difficulty" value="10-20: Plastic">Plastic (10-20): Mathcounts school, Mathcounts chapter, early AMC8</label><br>
+        <label><input type="checkbox" name="difficulty" value="20-30: Bronze">Bronze (20-30): Mathcounts state, medium-hard AMC8, easy AMC10</label><br>
+        <label><input type="checkbox" name="difficulty" value="30-40: Silver">Silver (30-40): Mathcounts nationals, medium-hard AMC10, easy-medium AMC12</label><br>
+        <label><input type="checkbox" name="difficulty" value="40-50: Ruby">Ruby (40-50): AMC10/12 final fives, easy-medium AIME, easy PUMaC/HMMT/BMT</label><br>
+        <label><input type="checkbox" name="difficulty" value="50-60: Gold">Gold (50-60): Medium-hard AIME, easy PUMaC/HMMT/BMT</label><br>
+        <label><input type="checkbox" name="difficulty" value="60-70: Sapphire">Sapphire (60-70): Hard AIME, easy-medium PUMaC/HMMT/BMT</label><br>
+        <label><input type="checkbox" name="difficulty" value="70-80: Opal">Opal (70-80): Medium-hard PUMaC/HMMT/BMT</label><br>
+        <label><input type="checkbox" name="difficulty" value="80-90: Emerald">Emerald (80-90): Hard PUMaC/HMMT/BMT, Olympiad Qualifier</label><br>
+        <label><input type="checkbox" name="difficulty" value="90-100: Diamond">Diamond (90-100): Problems that have been hand picked to be incredibly difficult.</label><br>
+        <hr>
+
+        <b>Topic:</b><br>
+        <label><input type="checkbox" name="topic" value="algebra" onclick="showSubtopics()">Algebra</label><br>
+        <label><input type="checkbox" name="topic" value="geometry" onclick="showSubtopics()">Geometry</label><br>
+        <label><input type="checkbox" name="topic" value="number_theory" onclick="showSubtopics()">Number Theory</label><br>
+        <label><input type="checkbox" name="topic" value="combinatorics" onclick="showSubtopics()">Combinatorics</label><br>
+        <hr>
+
+        <div id="sub_algebra" class="subtopics" style="display:none; margin-left:20px;">
+            <b>Algebra Subtopics:</b><br>
+            <label><input type="checkbox" name="subtopic_algebra" value="REPLACE1">REPLACE1</label><br>
+            <label><input type="checkbox" name="subtopic_algebra" value="REPLACE2">REPLACE2</label><br>
+        </div>
+        <div id="sub_geometry" class="subtopics" style="display:none; margin-left:20px;">
+            <b>Geometry Subtopics:</b><br>
+            <label><input type="checkbox" name="subtopic_geometry" value="REPLACE1">REPLACE1</label><br>
+            <label><input type="checkbox" name="subtopic_geometry" value="REPLACE2">REPLACE2</label><br>
+        </div>
+        <div id="sub_number_theory" class="subtopics" style="display:none; margin-left:20px;">
+            <b>Number Theory Subtopics:</b><br>
+            <label><input type="checkbox" name="subtopic_number_theory" value="REPLACE1">REPLACE1</label><br>
+            <label><input type="checkbox" name="subtopic_number_theory" value="REPLACE2">REPLACE2</label><br>
+        </div>
+        <div id="sub_combinatorics" class="subtopics" style="display:none; margin-left:20px;">
+            <b>Combinatorics Subtopics:</b><br>
+            <label><input type="checkbox" name="subtopic_combinatorics" value="REPLACE1">REPLACE1</label><br>
+            <label><input type="checkbox" name="subtopic_combinatorics" value="REPLACE2">REPLACE2</label><br>
+        </div>
+        <hr>
+
+        <input type="submit" value="Get Problem">
     </form>
+
+    {% if selections %}
+        <hr>
+        <b>You selected:</b>
+        <ul>
+            <li><b>Difficulty:</b> {{ selections.difficulties|join(', ') if selections.difficulties else 'None' }}</li>
+            <li><b>Topics:</b> {{ selections.topics|join(', ') if selections.topics else 'None' }}</li>
+            <li><b>Subtopics:</b> {{ selections.subtopics|join(', ') if selections.subtopics else 'None' }}</li>
+        </ul>
+    {% endif %}
+
     {% if problem %}
         <hr>
         <b>Sample Problem:</b>
         <p>{{ problem }}</p>
     {% endif %}
+    <script>
+        // Ensure subtopics visibility matches toggle on reload
+        document.getElementById('toggleSubtopics').addEventListener('change', showSubtopics);
+    </script>
 </body>
 </html>
